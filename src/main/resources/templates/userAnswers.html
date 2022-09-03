@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/static/img/favicon_32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/static/img/favicon_16x16.png}">
+    <title>MeetingBot</title>
+    <!-- CSS -->
+    <link th:href="@{/static/css/normalize.css}" rel="stylesheet">
+    <link th:href="@{/static/css/fonts.css}" rel="stylesheet">
+    <link th:href="@{/static/css/vendor/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/vendor/dataTables.bootstrap5.min.css}" rel="stylesheet">
+    <link th:href="@{/static/css/style.css}" rel="stylesheet">
+    <!-- JS-->
+    <script th:src="@{/static/js/vendor/jquery.js}"></script>
+    <script th:src="@{/static/js/vendor/bootstrap.min.js}"></script>
+    <script th:src="@{/static/js/vendor/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/static/js/vendor/dataTables.bootstrap4.min.js}"></script>
+    <script th:src="@{/static/js/vendor/datetime.js}"></script>
+    <script th:src="@{/static/js/vendor/moment.min.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bd-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img alt="" class="me-2" height="40" th:src="@{/static/img/nd_logo.png}" width="40">
+            <b>ND Meeting bot Web</b>
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="mt-5">
+        <h1 class="text-center">Отчёт по работе</h1>
+        <a href="getExcel" class="btn btn-success mt-2" type="button">Сохранить в xls</a>
+        <div class="mt-2">
+            <table class="table-bordered table-hover" id="answers">
+                <thead>
+                <tr class="thead_tr">
+                    <th>Дата</th>
+                    <th>Имя пользователя</th>
+                    <th>Сделано вчера</th>
+                    <th>Планы на сегодня</th>
+                    <th>Есть проблемы?</th>
+                    <th>Описание проблем</th>
+                </tr>
+                </thead>
+                <tr th:each="answer : ${answers}">
+                    <td th:text="${answer.date}">
+                    <td th:text="${answer.username}">
+                    <td th:text="${answer.yesterday}">
+                    <td th:text="${answer.today}">
+                    <td th:text="${answer.problem}">
+                    <td th:text="${answer.problem_details}">
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
